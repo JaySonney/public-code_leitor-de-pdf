@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url"; // ✅ CORREÇÃO
+import { fileURLToPath } from "url";
 import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
 import { execSync } from "child_process";
 import Tesseract from "tesseract.js";
@@ -105,7 +105,7 @@ async function processarPDF(filePath) {
 
 // ------------------- Processamento de todos os PDFs -------------------
 async function processarTodos() {
-  const exitDir = path.join(__dirname, "exit"); // ✅ CORREÇÃO
+  const exitDir = path.join(__dirname, "exit");
 
   if (!fs.existsSync(exitDir)) fs.mkdirSync(exitDir);
 
@@ -115,7 +115,7 @@ async function processarTodos() {
 
     try {
       const result = await processarPDF(filePath);
-      const outPath = path.join(exitDir, file.replace(".pdf", ".json")); // ✅ CORREÇÃO
+      const outPath = path.join(exitDir, file.replace(".pdf", ".json"));
       fs.writeFileSync(outPath, JSON.stringify(result, null, 2), "utf8");
       console.log("✅ Resultado salvo em:", outPath);
     } catch (err) {
